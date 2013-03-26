@@ -83,6 +83,7 @@ remote_file File.join(home_dir, "jenkins.war") do
   checksum node['jenkins']['server']['war_checksum'] unless node['jenkins']['server']['war_checksum'].nil?
   owner node['jenkins']['server']['user']
   group node['jenkins']['server']['group']
+  action :create_if_missing
   notifies :restart, "runit_service[jenkins]"
 end
 
